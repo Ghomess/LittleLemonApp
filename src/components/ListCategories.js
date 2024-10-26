@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { colors } from '../utils/colors';
 
 export default function ListCategories({ onPress, text, isSelected }) {
   return (
@@ -17,20 +18,20 @@ export default function ListCategories({ onPress, text, isSelected }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: colors.secondary3,
     borderRadius: 20,
   },
   selectedButton: {
-    backgroundColor: '#495E57',
+    backgroundColor: colors.primary1,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#495E57',
+    color: colors.primary1,
     paddingVertical: 7,
     paddingHorizontal: 20,
   },
   selectedTitle: {
-    color: '#FFFFFF',
+    color: colors.secondary3,
   },
 });

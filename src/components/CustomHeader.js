@@ -2,8 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import React, { useState, useCallback } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
-
-export default function CustomHeader() {
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../utils/colors';
+export default function CustomHeader({ screen }) {
   const [avatar, setAvatar] = useState(null);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -26,8 +27,27 @@ export default function CustomHeader() {
   );
 
   return (
-    <View style={styles.headerContainer}>
-      {/* Profile Image on the right */}
+    <View style={[styles.headerContainer]}>
+      {screen == 'Profile' && (
+        <TouchableOpacity
+          style={styles.goBack}
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <View style={styles.profileInitialLetterContainer}>
+            <Ionicons
+              name='arrow-back-outline'
+              size={20}
+              color={colors.primary1}
+            />
+          </View>
+        </TouchableOpacity>
+      )}
+
+      <Image
+        source={require('../../assets/logo.png')}
+        style={styles.logo}
+      />
       <TouchableOpacity
         style={styles.profileImageContainer}
         onPress={() => {
@@ -48,12 +68,6 @@ export default function CustomHeader() {
           </View>
         )}
       </TouchableOpacity>
-
-      {/* Logo in the center */}
-      <Image
-        source={require('../../assets/logo.png')}
-        style={styles.logo}
-      />
     </View>
   );
 }
@@ -62,19 +76,23 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     height: 60,
     elevation: 3,
-    shadowColor: '#000',
+    shadowColor: colors.secondary4,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
   },
-  logo: { marginLeft: 80 },
+
   profileImageContainer: {
     position: 'absolute',
     right: 10,
+  },
+  goBack: {
+    position: 'absolute',
+    left: 10,
   },
   profileInitialLetterContainer: {
     width: 40, // Fixed width for the letter container
@@ -82,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: 20, // Makes the container circular
     justifyContent: 'center', // Center vertically
     alignItems: 'center', // Center horizontally
-    backgroundColor: '#f0f0f0',
+    backgroundColor: colors.secondary3,
   },
   letter: {
     fontSize: 20,

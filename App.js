@@ -93,12 +93,7 @@ export default function App() {
         <Stack.Screen
           name='Profile'
           component={Profile}
-          options={{
-            headerTitle: 'Profile',
-            headerStyle: { backgroundColor: '#2a3c44' },
-            headerTintColor: '#fff',
-            headerTitleStyle: { fontWeight: 'bold' },
-          }}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
       <StatusBar />

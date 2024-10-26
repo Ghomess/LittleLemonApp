@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import SearchBar from './SearchBar';
+import { colors } from '../utils/colors';
 
-const WelcomeViewHome = ({ searchQuery, setSearchQuery }) => {
+const WelcomeViewHome = ({ searchQuery, setSearchQuery, onBoarding }) => {
   return (
     <View style={styles.littleLemonContainer}>
       <Text style={styles.title}>Little Lemon</Text>
@@ -22,16 +23,18 @@ const WelcomeViewHome = ({ searchQuery, setSearchQuery }) => {
           style={styles.lemonImage}
         />
       </View>
-      <View
-        style={{
-          width: '100%',
-        }}>
-        <SearchBar
-          placeholder='Search items'
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-      </View>
+      {!onBoarding && (
+        <View
+          style={{
+            width: '100%',
+          }}>
+          <SearchBar
+            placeholder='Search items'
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -40,9 +43,8 @@ const styles = StyleSheet.create({
   // Styles for LittleLemonComponent
   littleLemonContainer: {
     padding: 20,
-    backgroundColor: '#566e50', // Background color similar to the image
-
-    marginBottom: 20,
+    backgroundColor: colors.primary1, // Background color similar to the image
+    width: '100%',
   },
   littleLemonSubContainer: {
     flexDirection: 'row',
@@ -52,16 +54,16 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#f4bc43', // Yellow title color
+    color: colors.primary2, // Yellow title color
     marginBottom: 10,
   },
   littleLemonContainerdescription: {
     fontSize: 14,
-    color: '#fff',
+    color: colors.secondary3,
   },
   location: {
     fontSize: 24,
-    color: '#ffffff',
+    color: colors.secondary3,
     marginBottom: 20,
   },
   lemonImage: {
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     width: 50,
     height: 50,
-    backgroundColor: '#e4e4e4',
+    backgroundColor: colors.secondary3,
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',

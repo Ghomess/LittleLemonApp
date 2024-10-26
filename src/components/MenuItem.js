@@ -1,4 +1,5 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { colors } from '../utils/colors';
 
 export default function MenuItem({ item }) {
   return (
@@ -25,10 +26,9 @@ export default function MenuItem({ item }) {
 
 const styles = StyleSheet.create({
   itemContainer: {
-    backgroundColor: '#fff',
     padding: 10,
     marginBottom: 16,
-    borderRadius: 10,
+
     flexDirection: 'row', // Add this to align the image and text side by side
   },
   image: {
@@ -44,17 +44,17 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    color: colors.secondary4,
   },
   description: {
     width: '90%',
     fontSize: 14,
-    color: '#495E57',
+    color: colors.primary1,
     ellipsizeMode: 'tail',
   },
   price: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#495E57',
+    color: colors.primary1,
   },
 });

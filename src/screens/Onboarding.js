@@ -9,6 +9,8 @@ import {
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions } from '@react-navigation/native';
+import WelcomeViewHome from '../components/WelcomeViewHome';
+import { colors } from '../utils/colors';
 
 export default function OnboardingScreen({ navigation, completeOnboarding }) {
   const [firstName, setFirstName] = useState('');
@@ -42,34 +44,37 @@ export default function OnboardingScreen({ navigation, completeOnboarding }) {
   return (
     <View style={styles.container}>
       <Image
-        source={{ uri: 'https://your-image-url.com/little-lemon-logo.png' }}
+        source={require('../../assets/logo.png')}
         style={styles.logo}
       />
-      <Text style={styles.title}>Let us get to know you</Text>
-      <TextInput
-        style={styles.input}
-        placeholder='First Name'
-        value={firstName}
-        onChangeText={setFirstName}
-        autoCapitalize='words'
-      />
-      <TextInput
-        style={styles.input}
-        placeholder='Email'
-        value={email}
-        onChangeText={setEmail}
-        keyboardType='email-address'
-        autoCapitalize='none'
-      />
-      <TouchableOpacity
-        style={[
-          styles.button,
-          isButtonDisabled ? styles.buttonDisabled : styles.buttonEnabled,
-        ]}
-        onPress={handleNext}
-        disabled={isButtonDisabled}>
-        <Text style={styles.buttonText}>Next</Text>
-      </TouchableOpacity>
+
+      <WelcomeViewHome onBoarding={true} />
+      <View style={styles.items}>
+        <TextInput
+          style={styles.input}
+          placeholder='First Name *'
+          value={firstName}
+          onChangeText={setFirstName}
+          autoCapitalize='words'
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='Email *'
+          value={email}
+          onChangeText={setEmail}
+          keyboardType='email-address'
+          autoCapitalize='none'
+        />
+        <TouchableOpacity
+          style={[
+            styles.button,
+            isButtonDisabled ? styles.buttonDisabled : styles.buttonEnabled,
+          ]}
+          onPress={handleNext}
+          disabled={isButtonDisabled}>
+          <Text style={styles.buttonText}>Next</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -77,29 +82,30 @@ export default function OnboardingScreen({ navigation, completeOnboarding }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#d1d6db', // Matches the background color
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 16,
+  },
+  items: {
+    paddingHorizontal: 16,
+    width: '100%',
   },
   logo: {
-    width: 100,
-    height: 100,
     marginBottom: 20,
   },
   title: {
     fontSize: 18,
     marginBottom: 20,
-    color: '#2a3c44', // Dark gray color
+    color: colors.secondary4, // Dark gray color
   },
   input: {
     width: '100%',
     padding: 10,
     marginVertical: 10,
     borderWidth: 1,
-    borderColor: '#2a3c44', // Border color similar to the inputs in the design
+    borderColor: colors.secondary4,
     borderRadius: 5,
-    backgroundColor: '#fff', // White background for inputs
+    backgroundColor: colors.secondary3, // White background for inputs
   },
   button: {
     marginTop: 20,
@@ -109,13 +115,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonEnabled: {
-    backgroundColor: '#5cb85c', // Green color when enabled
+    backgroundColor: colors.primary1, // Green color when enabled
   },
   buttonDisabled: {
-    backgroundColor: '#ccc', // Gray color when disabled
+    backgroundColor: colors.secondary3, // Gray color when disabled
   },
   buttonText: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 16,
   },
 });

@@ -4,6 +4,7 @@ import CustomHeader from '../components/CustomHeader';
 import WelcomeViewHome from '../components/WelcomeViewHome';
 import MenuItem from '../components/MenuItem';
 import ListCategories from '../components/ListCategories';
+import { colors } from '../utils/colors';
 
 export default function Home({ db }) {
   const [menuData, setMenuData] = useState([]);
@@ -168,6 +169,15 @@ export default function Home({ db }) {
             }
             style={{ height: 'auto' }}
             showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={() => (
+              <View
+                style={{
+                  padding: 1,
+                  width: '100%',
+                  backgroundColor: colors.secondary3,
+                }}
+              />
+            )}
           />
         ) : (
           <View>
@@ -185,14 +195,15 @@ export default function Home({ db }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: colors.white,
     paddingHorizontal: 16,
+    paddingTop: 10,
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#495E57',
+    color: colors.primary1,
   },
   categoriesContainer: {
     marginBottom: 20,

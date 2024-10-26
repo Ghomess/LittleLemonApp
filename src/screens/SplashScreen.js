@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { colors } from '../utils/colors';
 
 const SplashScreen = () => {
   return (
@@ -7,7 +8,7 @@ const SplashScreen = () => {
       <Text style={styles.logo}>Little Lemon</Text>
       <ActivityIndicator
         size='large'
-        color='#000'
+        color={colors.secondary4}
       />
     </View>
   );
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: colors.secondary3,
   },
   logo: {
     fontSize: 24,
