@@ -31,17 +31,18 @@ The LittleLemonApp is a mobile application designed for users to explore a resta
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/Ghomess/little-lemon
+   git clone https://github.com/Ghomess/little-lemon.git
    cd little-lemon
    
 Install dependencies:
 
-  npm install
-
+   ```bash
+   npm install
+   ```
 Start the app:
-
-  npm start
-  
+   ```bash
+   npm start
+   ```
 This will start the Expo development server. You can use the Expo Go app on your mobile device to scan the QR code and view the application.
 
 Usage
